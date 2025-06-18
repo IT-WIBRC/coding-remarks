@@ -1,0 +1,1 @@
+A personal compendium of coding best practices, architectural guidelines, and valuable development remarks gathered across various programming languages and frameworks, including JavaScript, TypeScript, React, Vue.js, and more. This repository aims to foster consistent, maintainable, and testable code.
