@@ -6,9 +6,9 @@
 
 Vue identifies components by their registered name within the application's component tree. This name is typically:
 
-* The value of the `name` option in `defineComponent({ name: 'MyComponent', ... })`.
-* In `<script setup>`, it's automatically inferred from the filename (e.g., `MyComponent.vue` implies a name of `'MyComponent'`).
-* The name used during global registration (`app.component('MyGlobalComponent', MyGlobalComponent)`).
+- The value of the `name` option in `defineComponent({ name: 'MyComponent', ... })`.
+- In `<script setup>`, it's automatically inferred from the filename (e.g., `MyComponent.vue` implies a name of `'MyComponent'`).
+- The name used during global registration (`app.component('MyGlobalComponent', MyGlobalComponent)`).
 
 **Common Pitfall:** Do **NOT** use the name you give a component when you import it (e.g., `import MyAlias from './MyComponent.vue';`). The alias is only relevant within that specific file; Vue's rendering engine doesn't know the component by that alias.
 
@@ -46,3 +46,4 @@ describe('MyParentComponent', () => {
     expect(wrapper.html()).toContain('<mycomponent-stub>'); // The default stub output
   });
 });
+```

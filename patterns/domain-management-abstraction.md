@@ -9,8 +9,9 @@ This pattern helps you manage the data (your "domain objects") in your applicati
 **Purpose:** `IDomain` acts as a basic blueprint for all your important data objects (like a User, a Product, or a Badge). It sets common rules for all of them.
 
 **Key Features:**
-* **`id: TId | null`**: Every domain object has an ID. It can be `null` if the object doesn't represent real data yet (e.g., it's empty or hasn't been saved).
-* **`isEmpty: boolean`**: This is a special flag that tells you if the object actually holds useful data (`false`) or if it's just an empty placeholder (`true`). This is part of the "Null Object Pattern."
+
+- **`id: TId | null`**: Every domain object has an ID. It can be `null` if the object doesn't represent real data yet (e.g., it's empty or hasn't been saved).
+- **`isEmpty: boolean`**: This is a special flag that tells you if the object actually holds useful data (`false`) or if it's just an empty placeholder (`true`). This is part of the "Null Object Pattern."
 
 **Example (`~/api/types/IDomain.ts`):**
 
@@ -27,9 +28,9 @@ export interface IDomain<TId = string> {
   readonly id: TId | null; // The object's unique ID, or null if empty
   readonly isEmpty: boolean; // True if this object holds no real data
 }
-````
+```
 
------
+---
 
 ## 2\. Your Data Objects (e.g., `BadgeDomain`)
 
@@ -37,9 +38,9 @@ You'll create a specific class for each type of data, like `BadgeDomain` for a b
 
 **What these classes do:**
 
-  * **Translate Data:** They take raw data from your API (which might have weird names or formats) and turn it into a clean, easy-to-use format for your app.
-  * **Add Logic:** They can include their own smart parts, like a way to get a shortened description or check if a user is active.
-  * **Provide an `empty()` version:** Each class has a special `empty()` method that gives you an empty placeholder object.
+- **Translate Data:** They take raw data from your API (which might have weird names or formats) and turn it into a clean, easy-to-use format for your app.
+- **Add Logic:** They can include their own smart parts, like a way to get a shortened description or check if a user is active.
+- **Provide an `empty()` version:** Each class has a special `empty()` method that gives you an empty placeholder object.
 
 **Example (`~/domains/BadgeDomain.ts`):**
 
@@ -101,37 +102,39 @@ export class BadgeDomain implements IDomain<string> {
 
   // Example: A smart method inside the domain object
   get shortDescription(): string {
-    return this.description.length > 50 ? this.description.substring(0, 47) + '...' : this.description;
+    return this.description.length > 50
+      ? this.description.substring(0, 47) + "..."
+      : this.description;
   }
 }
 ```
 
------
+---
 
 ## 3\. How This Helps Your App (Big Advantages)
 
 This way of organizing your data simplifies your app's state management and how you show things on screen.
 
-  * **No More Annoying `null` Checks:**
+- **No More Annoying `null` Checks:**
 
-      * You always start with an `empty()` domain object in your store (e.g., `currentBadge = BadgeDomain.empty()`).
-      * This means `currentBadge` is *never* `null` or `undefined`.
-      * Instead of `if (currentBadge !== null)`, you simply check `if (currentBadge.isEmpty)`. This is much clearer and prevents common errors.
+  - You always start with an `empty()` domain object in your store (e.g., `currentBadge = BadgeDomain.empty()`).
+  - This means `currentBadge` is _never_ `null` or `undefined`.
+  - Instead of `if (currentBadge !== null)`, you simply check `if (currentBadge.isEmpty)`. This is much clearer and prevents common errors.
 
-  * **Your App Doesn't Care About API Changes:**
+- **Your App Doesn't Care About API Changes:**
 
-      * Your store and UI components only know about `BadgeDomain` (its `name`, `description`, `isEmpty`, etc.).
-      * If your backend API changes its data format (e.g., `first_name` becomes `givenName`), you **only need to change the `BadgeDomain.create()` method**.
-      * The rest of your app (your store's getters, your Vue components) remains untouched\! This saves a lot of work when APIs evolve.
+  - Your store and UI components only know about `BadgeDomain` (its `name`, `description`, `isEmpty`, etc.).
+  - If your backend API changes its data format (e.g., `first_name` becomes `givenName`), you **only need to change the `BadgeDomain.create()` method**.
+  - The rest of your app (your store's getters, your Vue components) remains untouched\! This saves a lot of work when APIs evolve.
 
-  * **Logic in the Right Place:**
+- **Logic in the Right Place:**
 
-      * All the rules for transforming raw API data into what your app needs happen in one spot (`Domain.create()`).
-      * Any calculations or helper methods related to a badge (like `shortDescription`) live directly inside `BadgeDomain`. This keeps your code organized and easy to find.
+  - All the rules for transforming raw API data into what your app needs happen in one spot (`Domain.create()`).
+  - Any calculations or helper methods related to a badge (like `shortDescription`) live directly inside `BadgeDomain`. This keeps your code organized and easy to find.
 
-  * **Clearer UI Code:**
+- **Clearer UI Code:**
 
-      * Your Vue components can directly use properties and methods from these domain objects (e.g., `{{ userStore.userProfile.fullName }}`, `v-if="!userStore.userProfile.isEmpty"`).
-      * This makes your templates cleaner and easier to read, as they don't need complex logic to figure out if data exists or how to format it.
+  - Your Vue components can directly use properties and methods from these domain objects (e.g., `{{ userStore.userProfile.fullName }}`, `v-if="!userStore.userProfile.isEmpty"`).
+  - This makes your templates cleaner and easier to read, as they don't need complex logic to figure out if data exists or how to format it.
 
 This pattern is a best practice for building strong, maintainable applications that can easily adapt to changes.
