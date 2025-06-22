@@ -10,12 +10,16 @@ This approach enhances **testability** and **clarity**. When functions are decla
 
 ```typescript
 // useMyUtility.ts
-import { ref } from 'vue'; // Example import if using reactivity
+import { ref } from "vue"; // Example import if using reactivity
 
 const internalState = ref(0); // If truly module-level shared state is intended
 
-export const myFunctionA = () => { /* ... */ };
-export const myFunctionB = () => { /* ... */ };
+export const myFunctionA = () => {
+  /* ... */
+};
+export const myFunctionB = () => {
+  /* ... */
+};
 
 // If you need to return a cohesive API, an object is good:
 export const useMyUtility = () => {
@@ -24,4 +28,4 @@ export const useMyUtility = () => {
 };
 ```
 
-***Note on Stateful Composables***: If a composable must manage isolated internal state for each invocation (e.g., `useCounter()` where each counter should be independent), then the closure pattern `(const useCounter = () => { const count = ref(0); return { count }; })` is appropriate. In such cases, the returned API (the object from the closure) is the unit that should be tested. This guideline primarily targets utilities that are intended to be stateless or share module-level state.
+**_Note on Stateful Composables_**: If a composable must manage isolated internal state for each invocation (e.g., `useCounter()` where each counter should be independent), then the closure pattern `(const useCounter = () => { const count = ref(0); return { count }; })` is appropriate. In such cases, the returned API (the object from the closure) is the unit that should be tested. This guideline primarily targets utilities that are intended to be stateless or share module-level state.

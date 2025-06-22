@@ -4,13 +4,13 @@
 
 Placing all validation logic directly within the Vue component has several drawbacks:
 
-  * **Code Duplication:** Repeating rules across forms.
-  * **Difficult Testing:** Logic intertwined with UI is harder to test.
-  * **Messy Components (SRP Violation):** Components become bloated, doing too many jobs.
-  * **Poor Scalability:** Complex forms lead to maintenance nightmares.
-  * **Lack of Reusability:** Logic is tied to one component.
+- **Code Duplication:** Repeating rules across forms.
+- **Difficult Testing:** Logic intertwined with UI is harder to test.
+- **Messy Components (SRP Violation):** Components become bloated, doing too many jobs.
+- **Poor Scalability:** Complex forms lead to maintenance nightmares.
+- **Lack of Reusability:** Logic is tied to one component.
 
------
+---
 
 ## 2\. Recommended Professional Practices
 
@@ -18,26 +18,26 @@ A multi-layered strategy for validation, distributing concerns appropriately:
 
 ### A. Client-Side Validation Libraries (Highly Recommended)
 
-  * **Gold Standard** for complex forms.
-  * Handle boilerplate, offer powerful features.
-  * **Examples:** `VeeValidate`, `Vuelidate`, `Zod`, `Yup`.
+- **Gold Standard** for complex forms.
+- Handle boilerplate, offer powerful features.
+- **Examples:** `VeeValidate`, `Vuelidate`, `Zod`, `Yup`.
 
 #### How it looks (Conceptual with VeeValidate):
 
 ```vue
 <script setup>
-import { useForm, Field, ErrorMessage } from 'vee-validate';
-import * as yup from 'yup';
+import { useForm, Field, ErrorMessage } from "vee-validate";
+import * as yup from "yup";
 
 const schema = yup.object({
-  email: yup.string().required('Email is required').email('Invalid email format'),
-  password: yup.string().required('Password is required').min(8, 'Min 8 characters'),
+  email: yup.string().required("Email is required").email("Invalid email format"),
+  password: yup.string().required("Password is required").min(8, "Min 8 characters"),
 });
 
 const { handleSubmit } = useForm({ validationSchema: schema });
 
-const onSubmit = handleSubmit(values => {
-  console.log('Form submitted:', values);
+const onSubmit = handleSubmit((values) => {
+  console.log("Form submitted:", values);
   // Send data to service layer
 });
 </script>
@@ -59,20 +59,23 @@ const onSubmit = handleSubmit(values => {
 </template>
 ```
 
------
+---
 
 ### B. Dedicated Validation Composables/Utilities
 
-  * For simpler, highly reusable rules not needing a full library.
-  * **Advantages:** Pure functions, easy to test, reusable.
+- For simpler, highly reusable rules not needing a full library.
+- **Advantages:** Pure functions, easy to test, reusable.
 
 #### Example (`composables/useValidation.ts`):
 
 ```typescript
 // composables/useValidation.ts
-import { ref, computed } from 'vue';
+import { ref, computed } from "vue";
 
-export function useFieldValidation(initialValue: string, validator: (val: string) => string | null) {
+export function useFieldValidation(
+  initialValue: string,
+  validator: (val: string) => string | null,
+) {
   const value = ref(initialValue);
   const errorMessage = computed(() => validator(value.value));
   const isValid = computed(() => errorMessage.value === null);
@@ -86,33 +89,33 @@ export function useFieldValidation(initialValue: string, validator: (val: string
 
 // utils/validators.ts (pure utility functions)
 export const isRequired = (value: string | null | undefined): string | null => {
-  return value && value.trim() !== '' ? null : 'This field is required.';
+  return value && value.trim() !== "" ? null : "This field is required.";
 };
 
 export const isValidEmail = (value: string): string | null => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(value) ? null : 'Please enter a valid email.';
+  return emailRegex.test(value) ? null : "Please enter a valid email.";
 };
 ```
 
------
+---
 
 #### Usage in a component:
 
 ```vue
 <script setup>
-import { useFieldValidation } from '~/composables/useValidation';
-import { isRequired, isValidEmail } from '~/utils/validators';
+import { useFieldValidation } from "~/composables/useValidation";
+import { isRequired, isValidEmail } from "~/utils/validators";
 
-const emailField = useFieldValidation('', isValidEmail);
-const passwordField = useFieldValidation('', isRequired);
+const emailField = useFieldValidation("", isValidEmail);
+const passwordField = useFieldValidation("", isRequired);
 
 const handleSubmit = () => {
   if (emailField.isValid.value && passwordField.isValid.value) {
-    console.log('Form is valid!');
+    console.log("Form is valid!");
     // Proceed to send data via a service
   } else {
-    console.log('Form has errors.');
+    console.log("Form has errors.");
   }
 };
 </script>
@@ -126,24 +129,29 @@ const handleSubmit = () => {
     </div>
     <div>
       <label>Password:</label>
-      <input v-model="passwordField.value" :class="{ 'border-red-500': passwordField.errorMessage }" />
-      <span v-if="passwordField.errorMessage" class="text-red-500">{{ passwordField.errorMessage }}</span>
+      <input
+        v-model="passwordField.value"
+        :class="{ 'border-red-500': passwordField.errorMessage }"
+      />
+      <span v-if="passwordField.errorMessage" class="text-red-500">{{
+        passwordField.errorMessage
+      }}</span>
     </div>
     <button type="submit">Submit</button>
   </form>
 </template>
 ```
 
------
+---
 
 ### C. Server-Side / Domain Layer Validation (Essential)
 
-  * **Crucial for Data Integrity and Security.**
-  * Client-side is for UX; server-side is for reliability.
-  * **Why:** Malicious users bypass client-side, complex business rules depend on backend data.
-  * **Integration:** Client-side should mirror server-side rules; backend returns clear error messages.
+- **Crucial for Data Integrity and Security.**
+- Client-side is for UX; server-side is for reliability.
+- **Why:** Malicious users bypass client-side, complex business rules depend on backend data.
+- **Integration:** Client-side should mirror server-side rules; backend returns clear error messages.
 
------
+---
 
 ## 3\. Conclusion: A Multi-Layered Approach
 

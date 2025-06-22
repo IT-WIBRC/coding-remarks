@@ -10,15 +10,16 @@ To achieve better encapsulation in Pinia stores, especially when using the Compo
 
 ### A. Using the Composition API within `defineStore` for Encapsulation (Highly Recommended for True Privacy)
 
-**Concept:** When defining a store using the Composition API setup function (i.e., `defineStore('id', () => { /* setup function */ })`), you can leverage JavaScript's module scope to control what is exposed. Anything declared *inside* the setup function but *not returned* in its final object will be private to that store instance.
+**Concept:** When defining a store using the Composition API setup function (i.e., `defineStore('id', () => { /* setup function */ })`), you can leverage JavaScript's module scope to control what is exposed. Anything declared _inside_ the setup function but _not returned_ in its final object will be private to that store instance.
 
 **Solution:**
+
 ```typescript
 // stores/myEncapsulatedStore.ts
-import { defineStore } from 'pinia';
-import { ref, computed } from 'vue'; // Or other Vue reactivity APIs
+import { defineStore } from "pinia";
+import { ref, computed } from "vue"; // Or other Vue reactivity APIs
 
-export const useMyEncapsulatedStore = defineStore('myEncapsulatedStore', () => {
+export const useMyEncapsulatedStore = defineStore("myEncapsulatedStore", () => {
   // --- Private State & Methods ---
   const _privateState = ref(0); // This state is internal
   const _helperValue = computed(() => _privateState.value * 2);
@@ -30,8 +31,10 @@ export const useMyEncapsulatedStore = defineStore('myEncapsulatedStore', () => {
   }
 
   // --- Public State & Methods (Returned from setup) ---
-  const publicData = ref('initial public data');
-  const publicGetter = computed(() => `Public: ${publicData.value}, Private Calc: ${_helperValue.value}`);
+  const publicData = ref("initial public data");
+  const publicGetter = computed(
+    () => `Public: ${publicData.value}, Private Calc: ${_helperValue.value}`,
+  );
 
   function performComplexAction(input: number) {
     // This public action orchestrates private and public methods
@@ -42,7 +45,7 @@ export const useMyEncapsulatedStore = defineStore('myEncapsulatedStore', () => {
 
   function resetStore() {
     _privateState.value = 0;
-    publicData.value = 'initial public data';
+    publicData.value = "initial public data";
   }
 
   // Explicitly return only what you want to expose
@@ -56,24 +59,24 @@ export const useMyEncapsulatedStore = defineStore('myEncapsulatedStore', () => {
     resetStore,
   };
 });
-````
+```
 
 **Advantages:**
 
-  * **True Encapsulation:** Variables and functions not returned from the setup function are genuinely private and inaccessible from outside the store instance.
-  * **Co-location:** Related private and public logic can live together in the same store file, enhancing readability for maintainers of that specific store.
-  * **TypeScript Enforcement:** TypeScript will prevent accidental access to private members from consumers of the store.
+- **True Encapsulation:** Variables and functions not returned from the setup function are genuinely private and inaccessible from outside the store instance.
+- **Co-location:** Related private and public logic can live together in the same store file, enhancing readability for maintainers of that specific store.
+- **TypeScript Enforcement:** TypeScript will prevent accidental access to private members from consumers of the store.
 
 **Considerations:**
 
-  * For very simple stores, it can be slightly more verbose than the Options API.
-  * Extremely complex internal logic might still benefit from being extracted into separate, plain utility functions (see next point) to keep the store file manageable.
+- For very simple stores, it can be slightly more verbose than the Options API.
+- Extremely complex internal logic might still benefit from being extracted into separate, plain utility functions (see next point) to keep the store file manageable.
 
 ### B. Extract Internal Logic to Separate Utilities/Composables (Also Highly Recommended)
 
 **Concept:** If a piece of logic (an action's implementation detail, a complex calculation for a getter) doesn't strictly need direct, reactive access to the store's state, it's often best placed outside the store definition entirely.
 
-**Solution:** Create plain TypeScript utility functions or separate Vue composables. Your Pinia store's public actions then *call* these external utilities. These utilities are simply imported into the store file and are not part of the store's public API.
+**Solution:** Create plain TypeScript utility functions or separate Vue composables. Your Pinia store's public actions then _call_ these external utilities. These utilities are simply imported into the store file and are not part of the store's public API.
 
 **Example:**
 
@@ -85,10 +88,10 @@ export function calculateComplexValue(param1: number, param2: number): number {
 }
 
 // stores/myStore.ts
-import { defineStore } from 'pinia';
-import { calculateComplexValue } from '~/utils/calculationHelpers'; // Internal import
+import { defineStore } from "pinia";
+import { calculateComplexValue } from "~/utils/calculationHelpers"; // Internal import
 
-export const useMyStore = defineStore('my', {
+export const useMyStore = defineStore("my", {
   state: () => ({
     data: 0,
   }),
@@ -101,16 +104,16 @@ export const useMyStore = defineStore('my', {
   },
   getters: {
     // ...
-  }
+  },
 });
 ```
 
 **Advantages:**
 
-  * **True Privacy:** The code resides entirely outside the store's public interface.
-  * **Improved Testability:** Utilities and composables are easier to test in isolation as pure functions or self-contained logic units.
-  * **Clearer Store Responsibility:** Stores remain focused purely on state management and orchestrating calls to external, well-defined logic.
-  * **Reduced Store File Size:** Keeps your store definition cleaner and more focused.
+- **True Privacy:** The code resides entirely outside the store's public interface.
+- **Improved Testability:** Utilities and composables are easier to test in isolation as pure functions or self-contained logic units.
+- **Clearer Store Responsibility:** Stores remain focused purely on state management and orchestrating calls to external, well-defined logic.
+- **Reduced Store File Size:** Keeps your store definition cleaner and more focused.
 
 ### C. Naming Convention (`_` Prefix)
 
@@ -120,9 +123,9 @@ export const useMyStore = defineStore('my', {
 
 **Advantages:** Simple to implement and provides a clear visual signal to other developers that the method is for internal consumption.
 
-**Drawbacks:** This is a convention, not enforced by TypeScript or the runtime. Other developers *can* still call these methods, but the underscore indicates "handle with care; this is an internal detail." This method is less preferred than A or B for strict privacy.
+**Drawbacks:** This is a convention, not enforced by TypeScript or the runtime. Other developers _can_ still call these methods, but the underscore indicates "handle with care; this is an internal detail." This method is less preferred than A or B for strict privacy.
 
------
+---
 
 ## 2\. Overall Recommendation for Pinia Stores
 

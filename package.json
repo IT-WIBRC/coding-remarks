@@ -1,0 +1,40 @@
+{
+  "name": "coding-remarks",
+  "version": "1.0.0",
+  "description": "A personal compendium of coding best practices, architectural guidelines, and valuable development remarks gathered across various programming languages and frameworks, including JavaScript, TypeScript, React, Vue.js, and more. This repository aims to foster consistent, maintainable, and testable code.",
+  "type": "module",
+  "scripts": {
+    "prepare": "husky install",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "keywords": [
+    "remarks",
+    "coding",
+    "best practices",
+    "architecture",
+    "guidelines",
+    "development",
+    "web development",
+    "software engineering",
+    "programming",
+    "code quality",
+    "maintainable code",
+    "testable code",
+    "consistent code"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2"
+  },
+  "dependencies": {
+    "prettier": "^3.5.3",
+    "prettier-plugin-jsdoc": "^1.3.2"
+  },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown"
+  }
+}
