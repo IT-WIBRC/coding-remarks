@@ -114,6 +114,11 @@ Longer, more detailed explanations that might be suitable for internal presentat
 - [**Vue.js Form Validation: Best Practices**](./presentations/vue-form-validation-best-practices.md)
   - Why direct component validation is not a best practice.
   - Recommended approaches: Client-side libraries, custom composables/utilities, server-side validation.
+- [**The Trouble with Using "Raw API Data" Directly in Frontend Components**](./presentations/dto-advice-frontend.md)
+  - The problem with using raw DTOs directly in frontend components.
+  - Common issues: Naming inconsistencies, excess data, reactivity challenges, testing difficulties.
+  - Recommended solution: Transform DTOs into "UI-Friendly" objects (Domain Objects or ViewModels).
+  - Benefits of this approach: Cleaner code, easier testing, better maintainability.
 
 ---
 
