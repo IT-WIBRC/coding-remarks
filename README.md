@@ -16,7 +16,8 @@ The goal is to foster consistent, maintainable, and testable code, serving as a 
     - [Styling (CSS, Tailwind CSS)](#styling-css-tailwind-css)
 4.  [Testing Strategies & Tooling](#4-testing-strategies--tooling)
 5.  [Presentation-Style Remarks](#5-presentation-style-remarks)
-6.  [Repository Structure](#6-repository-structure)
+6.  [NPM Package Management & Publishing](#6-npm-package-management--publishing)
+7.  [Repository Structure](#7-repository-structure)
 
 ---
 
@@ -37,6 +38,9 @@ These are foundational guidelines applicable to almost any programming context.
   - Recommended `pre-commit` actions (Linter, Formatter, Type Checking)
   - Recommended `pre-push` actions (Unit Tests, PR Workflow with Squashing)
   - Commit Message Formatting (Conventional Commits with Commitlint)
+- [**GitHub Actions: CI/CD Pipeline Recommendations**](./remarks/general/github-actions-ci-recommendations.md)
+  - Recommended CI/CD stages and jobs (PR checks, Deployments).
+  - Importance of CI/CD even with Git hooks.
 
 ---
 
@@ -69,7 +73,7 @@ Practical advice and common patterns specific to particular technologies.
 
 ### JavaScript & TypeScript
 
-- [Leveraging TypeScript Fully](./remarks/typescript-javascript/leveraging-typescript.md)
+- [Guide to Fully Leveraging TypeScript](./remarks/typescript-javascript/leveraging-typescript.md)
 - [Preventing Duplicate Function/Anonymous Function Addition](./remarks/typescript-javascript/prevent-duplicate-function-addition.md)
 
 ### Vue.js & Nuxt.js
@@ -86,8 +90,6 @@ Practical advice and common patterns specific to particular technologies.
 ### Styling (CSS, Tailwind CSS)
 
 - [Tailwind CSS Color Configuration Best Practice](./remarks/styling/tailwind-color-configuration.md)
-- [Vue.js Special Selectors (`:deep`, `::v-slotted`, etc.)](./remarks/styling/vue-special-selectors.md)
-- [Stylelint Configuration for Non-Standard Rules](./remarks/styling/stylelint-configuration.md)
 
 ---
 
@@ -95,18 +97,13 @@ Practical advice and common patterns specific to particular technologies.
 
 Insights into testing methodologies and specific tool configurations.
 
-- [Component Stubbing in Vue Tests](./testing/component-stubbing-vue.md)
-- [Mocking `useRuntimeConfig` in Nuxt.js with Vitest](./testing/mocking-useRuntimeConfig-vitest.md)
-- [Resolving Nuxt 3 Virtual Module Errors in Vitest (`#app` etc.)](./testing/nuxt-virtual-module-resolution.md)
-- [ESLint Plugin Local Testing Strategies](./testing/eslint-plugin-local-testing.md)
-- [NPM Publish Troubleshooting Guide](./testing/npm-publish-troubleshooting.md)
+- [Component Stubbing in Vue Tests](./remarks/testing/component-stubbing-vue.md)
+- [Mocking `useRuntimeConfig` in Nuxt.js with Vitest](./remarks/testing/mocking-useRuntimeConfig-vitest.md)
+- [Resolving Nuxt 3 Virtual Module Errors in Vitest (`#app` etc.)](./remarks/testing/nuxt-virtual-module-resolution.md)
 - [**Test File Exclusion and Alias Resolution (Nuxt.js/Vite/Vitest)**](./remarks/testing/test-file-exclusion-and-aliases.md)
   - Vite's conventional exclusion of test files.
   - Alias and auto-import issues in test files.
   - IDE behavior differences.
-- [**GitHub Actions: CI/CD Pipeline Recommendations**](./testing/github-actions-ci-recommendations.md)
-  - Recommended CI/CD stages and jobs (PR checks, Deployments).
-  - Importance of CI/CD even with Git hooks.
 
 ---
 
@@ -120,7 +117,24 @@ Longer, more detailed explanations that might be suitable for internal presentat
 
 ---
 
-## 6. Repository Structure
+## 6. NPM Package Management & Publishing
+
+This section covers common challenges and best practices related to managing, versioning, and publishing NPM packages, including strategies for testing and structuring reusable plugin "flavors."
+
+- [**NPM Publish Troubleshooting**](./npm/npm-publish-troubleshooting.md)
+  - The 24-hour "no-go" rule for deleting and republishing.
+  - Managing versions with `Changesets` (automated versioning and changelogs).
+  - Handling build and transpilation issues.
+  - Ensuring all necessary files are included in the published package.
+  - Authentication and permissions for publishing.
+  - Strategies for local package testing (`npm link`, `npm pack`).
+  - Creating plugin "flavors" using `package.json` `exports` for different configurations.
+  - [Linting Your Own Plugin's Code (`eslint-config-epsvue`)](./npm/npm-publish-troubleshooting.md) to maintain high quality.
+  - [Test Your npm plugin locally](./npm/eslint-plugin-local-testing.md) for testing your code locally.
+
+---
+
+## 7. Repository Structure
 
 This section outlines the current directory and file structure for the `coding-remarks` repository itself.
 
@@ -141,6 +155,7 @@ This section outlines the current directory and file structure for the `coding-r
 ├── remarks/                                 \# Categorized general coding remarks
 │   ├── general/                             \# General coding advice details
 │   │   ├── general-coding-principles.md
+│   │   ├── github-actions-ci-recommendations.md
 │   │   └── git-workflow-hooks.md
 │   ├── vue-nuxt/                            \# Vue.js & Nuxt.js specific remarks
 │   │   ├── composable-utility-export-pattern.md
@@ -152,15 +167,10 @@ This section outlines the current directory and file structure for the `coding-r
 │   │   ├── leveraging-typescript.md
 │   │   └── prevent-duplicate-function-addition.md
 │   ├── styling/                             \# Styling related remarks
-│   │   ├── stylelint-configuration.md
-│   │   ├── tailwind-color-configuration.md
-│   │   └── vue-special-selectors.md
+│   │   └── tailwind-color-configuration.md
 │   └── testing/                             \# Specific testing tool configurations/issues
 │       ├── component-stubbing-vue.md
-│       ├── eslint-plugin-local-testing.md
-│       ├── github-actions-ci-recommendations.md
 │       ├── mocking-useRuntimeConfig-vitest.md
-│       ├── npm-publish-troubleshooting.md
 │       ├── nuxt-virtual-module-resolution.md
 │       └── test-file-exclusion-and-aliases.md
 ├── patterns/                                \# In-depth explanations of architectural patterns
@@ -171,14 +181,17 @@ This section outlines the current directory and file structure for the `coding-r
 │   └── why-separate-layers.md
 ├── presentations/                           \# Longer, presentation-style remarks or deep dives
 │   └── vue-form-validation-best-practices.md
+├── npm/                                     \# NPM package related remarks and troubleshooting
+│   ├── eslint-plugin-local-testing.md       \# Moved from remarks/testing
+│   ├── npm-publish-troubleshooting.md       \# Moved from remarks/testing
+│   └── stylelint-configuration.md           \# Moved from remarks/styling
 ├── .commitlintrc.json                       \# Commitlint configuration
 ├── .editorconfig                            \# Editor style configuration
-├── .eslintrc.cjs                            \# ESLint configuration
 ├── .gitignore                               \# Git ignore rules
 ├── package.json                             \# Project dependencies and scripts
 ├── package-lock.json                        \# npm lock file
 ├── README.md                                \# This document\! (The main entry point)
 ├── .prettierignore                          \# Prettier ignore file
-├── .prettierrc.json                         \# Prettier configuration
-└── tsconfig.json                            \# TypeScript configuration (for linting/IDE, not compilation)
+└── .prettierrc.json                         \# Prettier configuration
+
 ```
