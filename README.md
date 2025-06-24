@@ -41,6 +41,10 @@ These are foundational guidelines applicable to almost any programming context.
 - [**GitHub Actions: CI/CD Pipeline Recommendations**](./remarks/general/github-actions-ci-recommendations.md)
   - Recommended CI/CD stages and jobs (PR checks, Deployments).
   - Importance of CI/CD even with Git hooks.
+- [**EditorConfig for Consistent Code Style**](./remarks/general/editorconfig.md)
+  - Using `.editorconfig` to enforce consistent coding styles across different editors.
+  - Key settings: Indentation, Line Endings, Character Set, End of Line,
+    Trim Trailing Whitespace, Insert Final Newline.
 
 ---
 
@@ -159,9 +163,10 @@ This section outlines the current directory and file structure for the `coding-r
 │   └── settings.json
 ├── remarks/                                 \# Categorized general coding remarks
 │   ├── general/                             \# General coding advice details
+│   │   ├── editorconfig.md
 │   │   ├── general-coding-principles.md
-│   │   ├── github-actions-ci-recommendations.md
-│   │   └── git-workflow-hooks.md
+│   │   ├── git-workflow-hooks.md
+│   │   └── github-actions-ci-recommendations.md
 │   ├── vue-nuxt/                            \# Vue.js & Nuxt.js specific remarks
 │   │   ├── composable-utility-export-pattern.md
 │   │   ├── module-import-style.md
@@ -185,6 +190,7 @@ This section outlines the current directory and file structure for the `coding-r
 │   ├── monads-either-maybe.md
 │   └── why-separate-layers.md
 ├── presentations/                           \# Longer, presentation-style remarks or deep dives
+│   ├── dto-advice-frontend.md
 │   └── vue-form-validation-best-practices.md
 ├── npm/                                     \# NPM package related remarks and troubleshooting
 │   ├── eslint-plugin-local-testing.md       \# Moved from remarks/testing
