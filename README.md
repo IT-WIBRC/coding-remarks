@@ -45,6 +45,11 @@ These are foundational guidelines applicable to almost any programming context.
   - Using `.editorconfig` to enforce consistent coding styles across different editors.
   - Key settings: Indentation, Line Endings, Character Set, End of Line,
     Trim Trailing Whitespace, Insert Final Newline.
+- [**AI Learning Caution: The Importance of Struggle**](./remarks/general/ai-learning-caution.md)
+  - The dangers of over-reliance on AI tools for coding.
+  - Key skills you miss out on when AI does the heavy lifting.
+  - How to use AI as a tool, not a crutch: struggle first, then ask for help.
+  - The importance of critical thinking, problem-solving, and building intuition.
 
 ---
 
@@ -163,6 +168,7 @@ This section outlines the current directory and file structure for the `coding-r
 │   └── settings.json
 ├── remarks/                                 \# Categorized general coding remarks
 │   ├── general/                             \# General coding advice details
+│   │   ├── ai-learning-caution.md
 │   │   ├── editorconfig.md
 │   │   ├── general-coding-principles.md
 │   │   ├── git-workflow-hooks.md
