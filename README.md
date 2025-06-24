@@ -2,7 +2,7 @@
 
 This repository serves as a personal compendium of coding best practices, architectural guidelines, and valuable development remarks. It documents lessons learned and preferred approaches gathered across various programming languages and frameworks I've worked with, including JavaScript, TypeScript, Vue.js, Nuxt.js, and will expand to others in the future.
 
-The goal is to foster consistent, maintainable, and testable code, serving as a quick reference and a living record of my evolving understanding of software development.
+The goal is to foster consistent, maintainable, and testable code, serving as a quick reference and a living record of my evolving understanding of software development. **For a broader collection of development and IT resources, including articles, tutorials, and tools, be sure to check out the [Dev and IT Resource project](https://github.com/masterivanic/Dev-and-it-ressource).**
 
 ---
 
