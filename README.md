@@ -57,6 +57,11 @@ These are foundational guidelines applicable to almost any programming context.
 
 In-depth explanations of high-level architectural patterns and significant design decisions.
 
+- [**Facade Pattern: Simplifying Complex Interactions in the Frontend**](./patterns/facade-pattern.md)
+  - Rationale for simplifying complex subsystem interactions.
+  - Benefits: Reduced component complexity, centralized orchestration, improved maintenance.
+  - Examples of direct calls vs. Facade usage.
+  - When and where to apply the pattern.
 - [**Monads: Either and Maybe for Robust Data Flow**](./patterns/monads-either-maybe.md)
   - Detailed explanation of `Either` and `Maybe` Monads.
   - Functional Programming principles encouraged by Monads (Immutability, Pure Functions, Composition, Separation of Concerns).
