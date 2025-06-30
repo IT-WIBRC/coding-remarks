@@ -162,9 +162,9 @@ This section outlines the current directory and file structure for the `coding-r
 .
 ├── .git/                                    \# Git version control directory
 ├── .github/                                 \# GitHub specific configurations (e.g., workflows)
-│   └── workflows/
-│       ├── ci.yml                           \# GitHub Actions CI workflow (npm-based)
-│       └── ... (other deployment workflows)
+│   ├── workflows/
+│   |    └── ci.yml                           \# GitHub Actions CI workflow (npm-based)
+│   └── pull_request_template.md
 ├── .husky/                                  \# Git hooks managed by Husky
 │   ├── pre-commit                           \# Runs lint-staged
 │   ├── commit-msg                           \# Runs commitlint
@@ -198,6 +198,7 @@ This section outlines the current directory and file structure for the `coding-r
 │   ├── api-service-layer-design.md
 │   ├── domain-management-abstraction.md
 │   ├── functional-programming-principles.md
+│   ├── facade-pattern.md
 │   ├── monads-either-maybe.md
 │   └── why-separate-layers.md
 ├── presentations/                           \# Longer, presentation-style remarks or deep dives
