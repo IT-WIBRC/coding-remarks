@@ -105,6 +105,8 @@ Practical advice and common patterns specific to particular technologies.
   - Using Composition API for true encapsulation.
   - Extracting internal logic to utilities.
   - Naming conventions.
+- [**Less Common Functions and Properties in Pinia**](./remarks/vue-nuxt/less-common-functions-properties.md)
+  - Unlocking advanced patterns and debugging capabilities.
 
 ### Styling (CSS, Tailwind CSS)
 
@@ -200,6 +202,7 @@ This section outlines the current directory and file structure for the `coding-r
 │   │   └── github-actions-ci-recommendations.md
 │   ├── vue-nuxt/                            \# Vue.js & Nuxt.js specific remarks
 │   │   ├── composable-utility-export-pattern.md
+│   │   ├── less-common-functions-properties.md
 │   │   ├── module-import-style.md
 │   │   ├── pinia-store-encapsulation.md
 │   │   ├── reactivity-shallowref.md
