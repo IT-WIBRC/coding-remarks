@@ -14,10 +14,11 @@ The goal is to foster consistent, maintainable, and testable code, serving as a 
     - [JavaScript & TypeScript](#javascript--typescript)
     - [Vue.js & Nuxt.js](#vuejs--nuxtjs)
     - [Styling (CSS, Tailwind CSS)](#styling-css-tailwind-css)
-4.  [Testing Strategies & Tooling](#4-testing-strategies--tooling)
-5.  [Presentation-Style Remarks](#5-presentation-style-remarks)
-6.  [NPM Package Management & Publishing](#6-npm-package-management--publishing)
-7.  [Repository Structure](#7-repository-structure)
+4.  [Utilities](#4-utilities)
+5.  [Testing Strategies & Tooling](#5-testing-strategies--tooling)
+6.  [Presentation-Style Remarks](#6-presentation-style-remarks)
+7.  [NPM Package Management & Publishing](#7-npm-package-management--publishing)
+8.  [Repository Structure](#8-repository-structure)
 
 ---
 
@@ -111,7 +112,22 @@ Practical advice and common patterns specific to particular technologies.
 
 ---
 
-## 4. Testing Strategies & Tooling
+## 4. Utilities
+
+In this section, we explore practical utility classes that demonstrate various coding patterns and provide reusable solutions for common tasks.
+
+### [String Utilities (Fluent API)](./utils/string-utils.ts)
+
+- **Description:** This utility class provides a set of common string manipulation methods (like `capitalize`, `toLowerCase`, `trim`, `replace`, etc.) designed to be **chainable**. It also includes helpful validation methods such as `isEmpty`, `isLessThan`, `isMoreThan`, and `isEqual`. This allows you to apply multiple transformations and perform checks on a string in a clean, readable, and fluent manner, mimicking natural language.
+- **Key Learning Points:**
+  - **Fluent API / Method Chaining:** How to design methods that return `this` (the current instance) to enable chaining multiple operations.
+  - **Static Factory Methods:** Using `StringUtils.of()` to create instances without the `new` keyword, making the API more user-friendly and consistent.
+  - **Encapsulation:** Managing internal string state (`currentString`) safely within the class.
+  - **Practical String Manipulation & Validation:** Reusable helpers for common string tasks and checks, improving code readability and reducing repetition.
+
+---
+
+## 5. Testing Strategies & Tooling
 
 Insights into testing methodologies and specific tool configurations.
 
@@ -125,7 +141,7 @@ Insights into testing methodologies and specific tool configurations.
 
 ---
 
-## 5. Presentation-Style Remarks
+## 6. Presentation-Style Remarks
 
 Longer, more detailed explanations that might be suitable for internal presentations or deep dives.
 
@@ -140,7 +156,7 @@ Longer, more detailed explanations that might be suitable for internal presentat
 
 ---
 
-## 6. NPM Package Management & Publishing
+## 7. NPM Package Management & Publishing
 
 This section covers common challenges and best practices related to managing, versioning, and publishing NPM packages, including strategies for testing and structuring reusable plugin "flavors."
 
@@ -157,7 +173,7 @@ This section covers common challenges and best practices related to managing, ve
 
 ---
 
-## 7. Repository Structure
+## 8. Repository Structure
 
 This section outlines the current directory and file structure for the `coding-remarks` repository itself.
 
@@ -213,6 +229,8 @@ This section outlines the current directory and file structure for the `coding-r
 │   ├── eslint-plugin-local-testing.md       \# Moved from remarks/testing
 │   ├── npm-publish-troubleshooting.md       \# Moved from remarks/testing
 │   └── stylelint-configuration.md           \# Moved from remarks/styling
+├── utils/                                   \# General utility functions and classes
+│   └── string-utils.ts
 ├── .commitlintrc.json                       \# Commitlint configuration
 ├── .editorconfig                            \# Editor style configuration
 ├── .gitignore                               \# Git ignore rules
