@@ -89,6 +89,10 @@ Practical advice and common patterns specific to particular technologies.
 
 - [Guide to Fully Leveraging TypeScript](./remarks/typescript-javascript/leveraging-typescript.md)
 - [Preventing Duplicate Function/Anonymous Function Addition](./remarks/typescript-javascript/prevent-duplicate-function-addition.md)
+- [**Async/Await Explained: Why We Wait (Again and Again)**](./remarks/typescript-javascript/async-await-explained.md)
+  - Understanding the wrapping of `async` functions and the importance of `await`.
+  - Real-world example of fetching user data with multiple `await`s.
+  - The concept of "unwrapping" promises in application logic.
 
 ### Vue.js & Nuxt.js
 
@@ -185,6 +189,7 @@ This section outlines the current directory and file structure for the `coding-r
 │   │   ├── reactivity-shallowref.md
 │   │   └── store-usage-scope.md
 │   ├── typescript-javascript/               \# TypeScript & JavaScript specific remarks
+│   │   ├── async-await-explained.md
 │   │   ├── leveraging-typescript.md
 │   │   └── prevent-duplicate-function-addition.md
 │   ├── styling/                             \# Styling related remarks
