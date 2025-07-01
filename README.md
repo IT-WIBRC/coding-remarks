@@ -136,6 +136,16 @@ In this section, we explore practical utility classes that demonstrate various c
   - **Encapsulation:** Managing internal number state (`currentNumber`) safely within the class.
   - **Practical Number Manipulation & Validation:** Reusable helpers for common number tasks and checks, improving code readability and reducing repetition.
 
+### [Money Utilities (Fluent API)](./utils/money-utils.ts)
+
+- **Description:** This utility class provides a set of common **monetary calculation and formatting** methods (like `add`, `subtract`, `multiply`, `divide`, `toPercentage`, `format`, etc.) designed to be **chainable**. It internally handles monetary values as **integers (e.g., cents)** to meticulously avoid floating-point inaccuracies inherent in JavaScript's standard number type, ensuring **precision**. It also includes helpful validation methods such as `isZero`, `isPositive`, `isNegative`, `isEqual`, `isLessThan`, and `isMoreThan`. This allows you to apply multiple financial transformations and perform checks on monetary values in a clean, readable, and fluent manner, mimicking natural language.
+- **Key Learning Points:**
+  - **Fluent API / Method Chaining:** How to design methods that return `this` (the current instance) to enable chaining multiple operations.
+  - **Static Factory Methods:** Using `MoneyUtils.of()` to create instances without the `new` keyword, making the API more user-friendly and consistent.
+  - **Encapsulation:** Managing internal monetary state (`_cents`, `_currency`, `_scale`) safely within the class.
+  - **Precision in Financial Calculations:** A critical pattern for handling money by storing values as integers (e.g., cents) to prevent common floating-point errors.
+  - **Practical Monetary Operations & Validation:** Reusable helpers for common financial tasks and checks, improving code readability and reducing repetition in e-commerce or financial applications.
+
 ---
 
 ## 5. Testing Strategies & Tooling
@@ -241,8 +251,9 @@ This section outlines the current directory and file structure for the `coding-r
 │   ├── eslint-plugin-local-testing.md       \# Moved from remarks/testing
 │   ├── npm-publish-troubleshooting.md       \# Moved from remarks/testing
 │   └── stylelint-configuration.md           \# Moved from remarks/styling
-├── utils/
-│   ├── number-utils.md                                          \# General utility functions and classes
+├── utils/                                   \# General utility functions and classes
+│   ├── money-utils.ts
+│   ├── number-utils.ts
 │   └── string-utils.ts
 ├── .commitlintrc.json                       \# Commitlint configuration
 ├── .editorconfig                            \# Editor style configuration
