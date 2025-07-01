@@ -127,6 +127,15 @@ In this section, we explore practical utility classes that demonstrate various c
   - **Encapsulation:** Managing internal string state (`currentString`) safely within the class.
   - **Practical String Manipulation & Validation:** Reusable helpers for common string tasks and checks, improving code readability and reducing repetition.
 
+### [Number Utilities (Fluent API)](./utils/number-utils.ts)
+
+- **Description:** This utility class provides a set of common number manipulation methods (like `add`, `multiply`, `toFixed`, `round`, etc.) designed to be **chainable**. It also includes helpful validation methods such as `isZero`, `isLessThan`, `isMoreThan`, and `isEqual`. This allows you to apply multiple transformations and perform checks on a number in a clean, readable, and fluent manner, mimicking natural language.
+- **Key Learning Points:**
+  - **Fluent API / Method Chaining:** How to design methods that return `this` (the current instance) to enable chaining multiple operations.
+  - **Static Factory Methods:** Using `NumberUtils.of()` to create instances without the `new` keyword, making the API more user-friendly and consistent.
+  - **Encapsulation:** Managing internal number state (`currentNumber`) safely within the class.
+  - **Practical Number Manipulation & Validation:** Reusable helpers for common number tasks and checks, improving code readability and reducing repetition.
+
 ---
 
 ## 5. Testing Strategies & Tooling
@@ -232,7 +241,8 @@ This section outlines the current directory and file structure for the `coding-r
 │   ├── eslint-plugin-local-testing.md       \# Moved from remarks/testing
 │   ├── npm-publish-troubleshooting.md       \# Moved from remarks/testing
 │   └── stylelint-configuration.md           \# Moved from remarks/styling
-├── utils/                                   \# General utility functions and classes
+├── utils/
+│   ├── number-utils.md                                          \# General utility functions and classes
 │   └── string-utils.ts
 ├── .commitlintrc.json                       \# Commitlint configuration
 ├── .editorconfig                            \# Editor style configuration
