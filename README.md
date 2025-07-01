@@ -146,6 +146,16 @@ In this section, we explore practical utility classes that demonstrate various c
   - **Precision in Financial Calculations:** A critical pattern for handling money by storing values as integers (e.g., cents) to prevent common floating-point errors.
   - **Practical Monetary Operations & Validation:** Reusable helpers for common financial tasks and checks, improving code readability and reducing repetition in e-commerce or financial applications.
 
+### [Boolean Utilities (Fluent API)](./utils/boolean-utils.ts)
+
+- **Description:** This utility class provides a set of common **logical operations and validation methods** for boolean values (like `and`, `or`, `not`, `xor`, `isTrue`, `isFalsy`, etc.) designed to be **chainable**. It robustly handles various input types, converting them to their boolean equivalent for operations. This allows you to build complex conditional logic and perform checks on boolean states in a clean, readable, and fluent manner, mimicking natural language.
+- **Key Learning Points:**
+  - **Fluent API / Method Chaining:** How to design methods that return `this` (the current instance) to enable chaining multiple logical operations.
+  - **Static Factory Methods:** Using `BooleanUtils.of()` to create instances without the `new` keyword, making the API more user-friendly and consistent.
+  - **Encapsulation:** Managing internal boolean state (`currentBoolean`) safely within the class.
+  - **Truthiness and Falsiness:** Practical application of JavaScript's truthy/falsy concepts in validation methods.
+  - **Practical Logical Operations & Validation:** Reusable helpers for common conditional checks and boolean transformations, improving code readability and reducing complex `if/else` or nested logical expressions.
+
 ---
 
 ## 5. Testing Strategies & Tooling
@@ -252,6 +262,7 @@ This section outlines the current directory and file structure for the `coding-r
 │   ├── npm-publish-troubleshooting.md       \# Moved from remarks/testing
 │   └── stylelint-configuration.md           \# Moved from remarks/styling
 ├── utils/                                   \# General utility functions and classes
+│   ├── boolean-utils.ts
 │   ├── money-utils.ts
 │   ├── number-utils.ts
 │   └── string-utils.ts
