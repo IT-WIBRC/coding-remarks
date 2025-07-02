@@ -15,10 +15,11 @@ The goal is to foster consistent, maintainable, and testable code, serving as a 
     - [Vue.js & Nuxt.js](#vuejs--nuxtjs)
     - [Styling (CSS, Tailwind CSS)](#styling-css-tailwind-css)
 4.  [Utilities](#4-utilities)
-5.  [Testing Strategies & Tooling](#5-testing-strategies--tooling)
-6.  [Presentation-Style Remarks](#6-presentation-style-remarks)
-7.  [NPM Package Management & Publishing](#7-npm-package-management--publishing)
-8.  [Repository Structure](#8-repository-structure)
+5.  [Useful Tools & Resources](#5-useful-tools--resources)
+6.  [Testing Strategies & Tooling](#6-testing-strategies--tooling)
+7.  [Presentation-Style Remarks](#7-presentation-style-remarks)
+8.  [NPM Package Management & Publishing](#8-npm-package-management--publishing)
+9.  [Repository Structure](#9-repository-structure)
 
 ---
 
@@ -105,8 +106,6 @@ Practical advice and common patterns specific to particular technologies.
   - Using Composition API for true encapsulation.
   - Extracting internal logic to utilities.
   - Naming conventions.
-- [**Less Common Functions and Properties in Pinia**](./remarks/vue-nuxt/less-common-functions-properties.md)
-  - Unlocking advanced patterns and debugging capabilities.
 
 ### Styling (CSS, Tailwind CSS)
 
@@ -129,14 +128,14 @@ In this section, we explore practical utility classes that demonstrate various c
 
 ### [Number Utilities (Fluent API)](./utils/number-utils.ts)
 
-- **Description:** This utility class provides a set of common number manipulation methods (like `add`, `multiply`, `toFixed`, `round`, etc.) designed to be **chainable**. It also includes helpful validation methods such as `isZero`, `isLessThan`, `isMoreThan`, and `isEqual`. This allows you to apply multiple transformations and perform checks on a number in a clean, readable, and fluent manner, mimicking natural language.
+- **Description:** This utility class provides a set of common number manipulation methods (like `add`, `multiply`, `toFixed`, `round`, etc.) designed to be **chainable**. It also includes helpful validation methods such as `isZero`, `isLessThan`, `isMoreThan`, `isEqual`, `isBetween`, `isEven`, `isOdd`, `isFinite`, and `isDivisibleBy`. This allows you to apply multiple transformations and perform checks on a number in a clean, readable, and fluent manner, mimicking natural language.
 - **Key Learning Points:**
   - **Fluent API / Method Chaining:** How to design methods that return `this` (the current instance) to enable chaining multiple operations.
   - **Static Factory Methods:** Using `NumberUtils.of()` to create instances without the `new` keyword, making the API more user-friendly and consistent.
   - **Encapsulation:** Managing internal number state (`currentNumber`) safely within the class.
   - **Practical Number Manipulation & Validation:** Reusable helpers for common number tasks and checks, improving code readability and reducing repetition.
 
-### [Money Utilities (Fluent API)](./utils/money-utils.ts)
+### [Money Utilities (Fluent API & Precision)](./utils/money-utils.ts)
 
 - **Description:** This utility class provides a set of common **monetary calculation and formatting** methods (like `add`, `subtract`, `multiply`, `divide`, `toPercentage`, `format`, etc.) designed to be **chainable**. It internally handles monetary values as **integers (e.g., cents)** to meticulously avoid floating-point inaccuracies inherent in JavaScript's standard number type, ensuring **precision**. It also includes helpful validation methods such as `isZero`, `isPositive`, `isNegative`, `isEqual`, `isLessThan`, and `isMoreThan`. This allows you to apply multiple financial transformations and perform checks on monetary values in a clean, readable, and fluent manner, mimicking natural language.
 - **Key Learning Points:**
@@ -146,7 +145,7 @@ In this section, we explore practical utility classes that demonstrate various c
   - **Precision in Financial Calculations:** A critical pattern for handling money by storing values as integers (e.g., cents) to prevent common floating-point errors.
   - **Practical Monetary Operations & Validation:** Reusable helpers for common financial tasks and checks, improving code readability and reducing repetition in e-commerce or financial applications.
 
-### [Boolean Utilities (Fluent API)](./utils/boolean-utils.ts)
+### [Boolean Utilities (Fluent API & Logic)](./utils/boolean-utils.ts)
 
 - **Description:** This utility class provides a set of common **logical operations and validation methods** for boolean values (like `and`, `or`, `not`, `xor`, `isTrue`, `isFalsy`, etc.) designed to be **chainable**. It robustly handles various input types, converting them to their boolean equivalent for operations. This allows you to build complex conditional logic and perform checks on boolean states in a clean, readable, and fluent manner, mimicking natural language.
 - **Key Learning Points:**
@@ -158,7 +157,17 @@ In this section, we explore practical utility classes that demonstrate various c
 
 ---
 
-## 5. Testing Strategies & Tooling
+## 5. Useful Tools & Resources
+
+This document serves as a curated list of valuable tools and resources that can significantly enhance various aspects of software development, design, and productivity. These tools are categorized to help you quickly find what you need for different tasks.
+
+- [**Useful Tools and Resources**](./remarks/general/useful-tools-and-resources.md)
+  - **Description:** A comprehensive list of external tools and resources categorized by their utility (e.g., Email & SMTP Testing, Diagramming, Career & Resume Building, Web Development & Database Tools, AI & Document Interaction). Each entry provides a brief description and relevant keywords for quick discovery.
+  - **Keywords:** Developer tools, web development resources, software engineering tools, productivity tools, design tools, AI tools, database tools, email testing, diagramming, resume builder.
+
+---
+
+## 6. Testing Strategies & Tooling
 
 Insights into testing methodologies and specific tool configurations.
 
@@ -172,7 +181,7 @@ Insights into testing methodologies and specific tool configurations.
 
 ---
 
-## 6. Presentation-Style Remarks
+## 7. Presentation-Style Remarks
 
 Longer, more detailed explanations that might be suitable for internal presentations or deep dives.
 
@@ -187,7 +196,7 @@ Longer, more detailed explanations that might be suitable for internal presentat
 
 ---
 
-## 7. NPM Package Management & Publishing
+## 8. NPM Package Management & Publishing
 
 This section covers common challenges and best practices related to managing, versioning, and publishing NPM packages, including strategies for testing and structuring reusable plugin "flavors."
 
@@ -204,7 +213,7 @@ This section covers common challenges and best practices related to managing, ve
 
 ---
 
-## 8. Repository Structure
+## 9. Repository Structure
 
 This section outlines the current directory and file structure for the `coding-remarks` repository itself.
 
@@ -228,10 +237,10 @@ This section outlines the current directory and file structure for the `coding-r
 │   │   ├── editorconfig.md
 │   │   ├── general-coding-principles.md
 │   │   ├── git-workflow-hooks.md
-│   │   └── github-actions-ci-recommendations.md
+│   │   ├── github-actions-ci-recommendations.md
+│   │   └── useful-tools-and-resources.md    \# NEW: Useful tools and resources
 │   ├── vue-nuxt/                            \# Vue.js & Nuxt.js specific remarks
 │   │   ├── composable-utility-export-pattern.md
-│   │   ├── less-common-functions-properties.md
 │   │   ├── module-import-style.md
 │   │   ├── pinia-store-encapsulation.md
 │   │   ├── reactivity-shallowref.md
@@ -262,10 +271,10 @@ This section outlines the current directory and file structure for the `coding-r
 │   ├── npm-publish-troubleshooting.md       \# Moved from remarks/testing
 │   └── stylelint-configuration.md           \# Moved from remarks/styling
 ├── utils/                                   \# General utility functions and classes
-│   ├── boolean-utils.ts
-│   ├── money-utils.ts
+│   ├── string-utils.ts
 │   ├── number-utils.ts
-│   └── string-utils.ts
+│   ├── money-utils.ts
+│   └── boolean-utils.ts
 ├── .commitlintrc.json                       \# Commitlint configuration
 ├── .editorconfig                            \# Editor style configuration
 ├── .gitignore                               \# Git ignore rules
