@@ -178,6 +178,11 @@ Insights into testing methodologies and specific tool configurations.
   - Vite's conventional exclusion of test files.
   - Alias and auto-import issues in test files.
   - IDE behavior differences.
+- [**Testing Reactive Composables in Nuxt & Vitest: Overcoming Mocking Challenges**](./remarks/testing/vitest-nuxt-reactive-mocks.md)
+  - Vitest's strict matchers (`toBe`, `toEqual`, `toStrictEqual`).
+  - The "different instances" problem with reactive mocks in Nuxt/Vitest.
+  - Why global mocks in `vitest.setup.ts` can fail for reactive state.
+  - A robust pattern for centralizing singleton mocks and applying them locally.
 
 ---
 
@@ -255,7 +260,8 @@ This section outlines the current directory and file structure for the `coding-r
 │       ├── component-stubbing-vue.md
 │       ├── mocking-useRuntimeConfig-vitest.md
 │       ├── nuxt-virtual-module-resolution.md
-│       └── test-file-exclusion-and-aliases.md
+│       ├── test-file-exclusion-and-aliases.md
+│       └── vitest-nuxt-reactive-mocks.md
 ├── patterns/                                \# In-depth explanations of architectural patterns
 │   ├── api-service-layer-design.md
 │   ├── domain-management-abstraction.md
