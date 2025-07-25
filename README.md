@@ -164,6 +164,7 @@ This document serves as a curated list of valuable tools and resources that can 
 - [**Useful Tools and Resources**](./remarks/general/useful-tools-and-resources.md)
   - **Description:** A comprehensive list of external tools and resources categorized by their utility (e.g., Email & SMTP Testing, Diagramming, Career & Resume Building, Web Development & Database Tools, AI & Document Interaction). Each entry provides a brief description and relevant keywords for quick discovery.
   - **Keywords:** Developer tools, web development resources, software engineering tools, productivity tools, design tools, AI tools, database tools, email testing, diagramming, resume builder.
+- **Pramp**: A platform for practicing coding interviews with peers. It offers a structured way to practice technical interviews, including system design and behavioral questions, by pairing you with other developers for mock interviews. [Link](https://www.pramp.com/)
 
 ---
 
