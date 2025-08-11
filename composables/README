@@ -1,0 +1,16 @@
+# Composables
+
+This folder contains a collection of reusable, reactive composable functions for Vue.js applications.
+
+Each composable is designed to solve a specific problem, from managing state to interacting with browser APIs, while remaining lightweight and independent. This allows you to cherry-pick the utilities you need without adding a large library as a dependency.
+
+---
+
+## Available Composables
+
+### `useBreakpoints`
+
+A composable for checking the current window's screen size based on predefined breakpoints. It's a reactive solution to handle responsive design without manually managing `resize` event listeners.
+
+- **Path:** `composables/useBreakpoints`
+- **Documentation:** [README.md](./useBreakpoints/README.md)

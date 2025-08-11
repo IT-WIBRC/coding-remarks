@@ -1,6 +1,6 @@
 # Coding Remarks: Best Practices & Architectural Guidelines
 
-This repository serves as a personal compendium of coding best practices, architectural guidelines, and valuable development remarks. It documents lessons learned and preferred approaches gathered across various programming languages and frameworks I've worked with, including JavaScript, TypeScript, Vue.js, Nuxt.js, and will expand to others in the future.
+This repository serves as a personal compendium of coding best practices, architectural guidelines, and valuable development remarks. It documents lessons learned and preferred approaches gathered across various programming languages and frameworks, including JavaScript, TypeScript, Vue.js, and Nuxt.js. This collection is a quick reference and a living record of my evolving understanding of software development.
 
 The goal is to foster consistent, maintainable, and testable code, serving as a quick reference and a living record of my evolving understanding of software development. **For a broader collection of development and IT resources, including articles, tutorials, and tools, be sure to check out the [Dev and IT Resource project](https://github.com/masterivanic/Dev-and-it-ressource).**
 
@@ -8,22 +8,20 @@ The goal is to foster consistent, maintainable, and testable code, serving as a 
 
 ## Table of Contents
 
-1.  [Core Principles & General Advice](#1-core-principles--general-advice)
-2.  [Architectural Patterns & Design Choices](#2-architectural-patterns--design-choices)
-3.  [Language & Framework Specific Remarks](#3-language--framework-specific-remarks)
-    - [JavaScript & TypeScript](#javascript--typescript)
-    - [Vue.js & Nuxt.js](#vuejs--nuxtjs)
-    - [Styling (CSS, Tailwind CSS)](#styling-css-tailwind-css)
-4.  [Utilities](#4-utilities)
-5.  [Useful Tools & Resources](#5-useful-tools--resources)
-6.  [Testing Strategies & Tooling](#6-testing-strategies--tooling)
-7.  [Presentation-Style Remarks](#7-presentation-style-remarks)
-8.  [NPM Package Management & Publishing](#8-npm-package-management--publishing)
-9.  [Repository Structure](#9-repository-structure)
+- [Core Principles & General Advice](#core-principles--general-advice)
+- [Architectural Patterns & Design Choices](#architectural-patterns--design-choices)
+- [Language & Framework Specific Remarks](#language--framework-specific-remarks)
+- [Utilities](#utilities)
+- [Composables](#composables)
+- [Useful Tools & Resources](#useful-tools--resources)
+- [Testing Strategies & Tooling](#testing-strategies--tooling)
+- [Presentation-Style Remarks](#presentation-style-remarks)
+- [NPM Package Management & Publishing](#npm-package-management--publishing)
+- [Repository Structure](#repository-structure)
 
 ---
 
-## 1. Core Principles & General Advice
+## Core Principles & General Advice
 
 These are foundational guidelines applicable to almost any programming context.
 
@@ -55,7 +53,7 @@ These are foundational guidelines applicable to almost any programming context.
 
 ---
 
-## 2. Architectural Patterns & Design Choices
+## Architectural Patterns & Design Choices
 
 In-depth explanations of high-level architectural patterns and significant design decisions.
 
@@ -83,7 +81,7 @@ In-depth explanations of high-level architectural patterns and significant desig
 
 ---
 
-## 3. Language & Framework Specific Remarks
+## Language & Framework Specific Remarks
 
 Practical advice and common patterns specific to particular technologies.
 
@@ -113,53 +111,37 @@ Practical advice and common patterns specific to particular technologies.
 
 ---
 
-## 4. Utilities
+## Utilities
 
-In this section, we explore practical utility classes that demonstrate various coding patterns and provide reusable solutions for common tasks.
+This section contains practical utility classes that demonstrate various coding patterns and provide reusable solutions for common tasks.
 
-### [String Utilities (Fluent API)](./utils/string-utils.ts)
-
-- **Description:** This utility class provides a set of common string manipulation methods (like `capitalize`, `toLowerCase`, `trim`, `replace`, etc.) designed to be **chainable**. It also includes helpful validation methods such as `isEmpty`, `isLessThan`, `isMoreThan`, and `isEqual`. This allows you to apply multiple transformations and perform checks on a string in a clean, readable, and fluent manner, mimicking natural language.
-- **Key Learning Points:**
-  - **Fluent API / Method Chaining:** How to design methods that return `this` (the current instance) to enable chaining multiple operations.
-  - **Static Factory Methods:** Using `StringUtils.of()` to create instances without the `new` keyword, making the API more user-friendly and consistent.
-  - **Encapsulation:** Managing internal string state (`currentString`) safely within the class.
-  - **Practical String Manipulation & Validation:** Reusable helpers for common string tasks and checks, improving code readability and reducing repetition.
-
-### [Number Utilities (Fluent API)](./utils/number-utils.ts)
-
-- **Description:** This utility class provides a set of common number manipulation methods (like `add`, `multiply`, `toFixed`, `round`, etc.) designed to be **chainable**. It also includes helpful validation methods such as `isZero`, `isLessThan`, `isMoreThan`, `isEqual`, `isBetween`, `isEven`, `isOdd`, `isFinite`, and `isDivisibleBy`. This allows you to apply multiple transformations and perform checks on a number in a clean, readable, and fluent manner, mimicking natural language.
-- **Key Learning Points:**
-  - **Fluent API / Method Chaining:** How to design methods that return `this` (the current instance) to enable chaining multiple operations.
-  - **Static Factory Methods:** Using `NumberUtils.of()` to create instances without the `new` keyword, making the API more user-friendly and consistent.
-  - **Encapsulation:** Managing internal number state (`currentNumber`) safely within the class.
-  - **Practical Number Manipulation & Validation:** Reusable helpers for common number tasks and checks, improving code readability and reducing repetition.
-
-### [Money Utilities (Fluent API & Precision)](./utils/money-utils.ts)
-
-- **Description:** This utility class provides a set of common **monetary calculation and formatting** methods (like `add`, `subtract`, `multiply`, `divide`, `toPercentage`, `format`, etc.) designed to be **chainable**. It internally handles monetary values as **integers (e.g., cents)** to meticulously avoid floating-point inaccuracies inherent in JavaScript's standard number type, ensuring **precision**. It also includes helpful validation methods such as `isZero`, `isPositive`, `isNegative`, `isEqual`, `isLessThan`, and `isMoreThan`. This allows you to apply multiple financial transformations and perform checks on monetary values in a clean, readable, and fluent manner, mimicking natural language.
-- **Key Learning Points:**
-  - **Fluent API / Method Chaining:** How to design methods that return `this` (the current instance) to enable chaining multiple operations.
-  - **Static Factory Methods:** Using `MoneyUtils.of()` to create instances without the `new` keyword, making the API more user-friendly and consistent.
-  - **Encapsulation:** Managing internal monetary state (`_cents`, `_currency`, `_scale`) safely within the class.
-  - **Precision in Financial Calculations:** A critical pattern for handling money by storing values as integers (e.g., cents) to prevent common floating-point errors.
-  - **Practical Monetary Operations & Validation:** Reusable helpers for common financial tasks and checks, improving code readability and reducing repetition in e-commerce or financial applications.
-
-### [Boolean Utilities (Fluent API & Logic)](./utils/boolean-utils.ts)
-
-- **Description:** This utility class provides a set of common **logical operations and validation methods** for boolean values (like `and`, `or`, `not`, `xor`, `isTrue`, `isFalsy`, etc.) designed to be **chainable**. It robustly handles various input types, converting them to their boolean equivalent for operations. This allows you to build complex conditional logic and perform checks on boolean states in a clean, readable, and fluent manner, mimicking natural language.
-- **Key Learning Points:**
-  - **Fluent API / Method Chaining:** How to design methods that return `this` (the current instance) to enable chaining multiple logical operations.
-  - **Static Factory Methods:** Using `BooleanUtils.of()` to create instances without the `new` keyword, making the API more user-friendly and consistent.
-  - **Encapsulation:** Managing internal boolean state (`currentBoolean`) safely within the class.
-  - **Truthiness and Falsiness:** Practical application of JavaScript's truthy/falsy concepts in validation methods.
-  - **Practical Logical Operations & Validation:** Reusable helpers for common conditional checks and boolean transformations, improving code readability and reducing complex `if/else` or nested logical expressions.
+- [**String Utilities (Fluent API)**](./utils/string-utils.ts)
+  - **Description:** This utility class provides a set of common string manipulation methods (like `capitalize`, `toLowerCase`, `trim`, `replace`, etc.) designed to be **chainable**. It also includes helpful validation methods such as `isEmpty`, `isLessThan`, `isMoreThan`, and `isEqual`.
+  - **Key Learning Points:** Fluent API / Method Chaining, Static Factory Methods, Encapsulation, and Practical String Manipulation & Validation.
+- [**Number Utilities (Fluent API)**](./utils/number-utils.ts)
+  - **Description:** This utility class provides a set of common number manipulation methods (like `add`, `multiply`, `toFixed`, `round`, etc.) designed to be **chainable**. It also includes helpful validation methods such as `isZero`, `isLessThan`, `isMoreThan`, `isEqual`, `isBetween`, `isEven`, `isOdd`, `isFinite`, and `isDivisibleBy`.
+  - **Key Learning Points:** Fluent API / Method Chaining, Static Factory Methods, Encapsulation, and Practical Number Manipulation & Validation.
+- [**Money Utilities (Fluent API & Precision)**](./utils/money-utils.ts)
+  - **Description:** This utility class provides a set of common **monetary calculation and formatting** methods (like `add`, `subtract`, `multiply`, `divide`, `toPercentage`, `format`, etc.) designed to be **chainable**. It internally handles monetary values as **integers (e.g., cents)** to meticulously avoid floating-point inaccuracies.
+  - **Key Learning Points:** Fluent API / Method Chaining, Static Factory Methods, Encapsulation, and Precision in Financial Calculations.
+- [**Boolean Utilities (Fluent API & Logic)**](./utils/boolean-utils.ts)
+  - **Description:** This utility class provides a set of common **logical operations and validation methods** for boolean values (like `and`, `or`, `not`, `xor`, `isTrue`, `isFalsy`, etc.) designed to be **chainable**. It handles various input types, converting them to their boolean equivalent for operations.
+  - **Key Learning Points:** Fluent API / Method Chaining, Static Factory Methods, Encapsulation, and Practical Logical Operations & Validation.
 
 ---
 
-## 5. Useful Tools & Resources
+## Composables
 
-This document serves as a curated list of valuable tools and resources that can significantly enhance various aspects of software development, design, and productivity. These tools are categorized to help you quickly find what you need for different tasks.
+This folder contains a collection of reusable, reactive composable functions for Vue.js applications. Each composable is designed to be lightweight and independent, allowing you to use them without adding a large library as a dependency.
+
+- [**`useBreakpoints`**](./composables/useBreakpoints/README.md)
+  - **Description:** A composable for checking the current window's screen size based on predefined breakpoints. It's a reactive solution to handle responsive design without manually managing `resize` event listeners.
+
+---
+
+## Useful Tools & Resources
+
+This document serves as a curated list of valuable tools and resources that can significantly enhance various aspects of software development, design, and productivity.
 
 - [**Useful Tools and Resources**](./remarks/general/useful-tools-and-resources.md)
   - **Description:** A comprehensive list of external tools and resources categorized by their utility (e.g., Email & SMTP Testing, Diagramming, Career & Resume Building, Web Development & Database Tools, AI & Document Interaction). Each entry provides a brief description and relevant keywords for quick discovery.
@@ -168,7 +150,7 @@ This document serves as a curated list of valuable tools and resources that can 
 
 ---
 
-## 6. Testing Strategies & Tooling
+## Testing Strategies & Tooling
 
 Insights into testing methodologies and specific tool configurations.
 
@@ -187,7 +169,7 @@ Insights into testing methodologies and specific tool configurations.
 
 ---
 
-## 7. Presentation-Style Remarks
+## Presentation-Style Remarks
 
 Longer, more detailed explanations that might be suitable for internal presentations or deep dives.
 
@@ -202,7 +184,7 @@ Longer, more detailed explanations that might be suitable for internal presentat
 
 ---
 
-## 8. NPM Package Management & Publishing
+## NPM Package Management & Publishing
 
 This section covers common challenges and best practices related to managing, versioning, and publishing NPM packages, including strategies for testing and structuring reusable plugin "flavors."
 
@@ -214,74 +196,80 @@ This section covers common challenges and best practices related to managing, ve
   - Authentication and permissions for publishing.
   - Strategies for local package testing (`npm link`, `npm pack`).
   - Creating plugin "flavors" using `package.json` `exports` for different configurations.
-  - [Linting Your Own Plugin's Code (`eslint-config-epsvue`)](./npm/npm-publish-troubleshooting.md) to maintain high quality.
-  - [Test Your npm plugin locally](./npm/eslint-plugin-local-testing.md) for testing your code locally.
+- [Linting Your Own Plugin's Code (`eslint-config-epsvue`)](./npm/npm-publish-troubleshooting.md)
+  - Maintain high quality by using a consistent ESLint configuration for your published plugin.
+- [Test Your npm plugin locally](./npm/eslint-plugin-local-testing.md)
+  - How to effectively test your code locally before publishing to NPM.
 
 ---
 
-## 9. Repository Structure
+## Repository Structure
 
 This section outlines the current directory and file structure for the `coding-remarks` repository itself.
 
 ```
-
 .
-├── .git/                                    \# Git version control directory
-├── .github/                                 \# GitHub specific configurations (e.g., workflows)
+├── .git/                                    # Git version control directory
+├── .github/                                 # GitHub specific configurations (e.g., workflows)
 │   ├── workflows/
-│   |    └── ci.yml                           \# GitHub Actions CI workflow (npm-based)
+│   |    └── ci.yml                           # GitHub Actions CI workflow (npm-based)
 │   └── pull_request_template.md
-├── .husky/                                  \# Git hooks managed by Husky
-│   ├── pre-commit                           \# Runs lint-staged
-│   ├── commit-msg                           \# Runs commitlint
-│   └── \_/                                   \# Husky internal directory
-├── .vscode/                                 \# VS Code editor settings (optional)
+├── .husky/                                  # Git hooks managed by Husky
+│   ├── pre-commit                           # Runs lint-staged
+│   ├── commit-msg                           # Runs commitlint
+│   └── _/                                   # Husky internal directory
+├── .vscode/                                 # VS Code editor settings (optional)
 │   └── settings.json
-├── remarks/                                 \# Categorized general coding remarks
-│   ├── general/                             \# General coding advice details
+├── composables/                             # Vue.js composables for reusable logic
+│   ├── useBreakpoints/
+|   |  ├── index.ts                           # The code for the composable
+│   |  └── README.md                          # Documentation for the composable
+|   └── README.md
+├── npm/                                     # NPM package related remarks and troubleshooting
+│   ├── eslint-plugin-local-testing.md
+│   ├── npm-publish-troubleshooting.md
+│   └── stylelint-configuration.md
+├── patterns/                                # In-depth explanations of architectural patterns
+│   ├── api-service-layer-design.md
+│   ├── domain-management-abstraction.md
+│   ├── facade-pattern.md
+│   ├── functional-programming-principles.md
+│   ├── monads-either-maybe.md
+│   └── why-separate-layers.md
+├── presentations/                           # Longer, presentation-style remarks or deep dives
+│   ├── dto-advice-frontend.md
+│   └── vue-form-validation-best-practices.md
+├── remarks/                                 # Categorized general coding remarks
+│   ├── general/                             # General coding advice details
 │   │   ├── ai-learning-caution.md
 │   │   ├── editorconfig.md
 │   │   ├── general-coding-principles.md
 │   │   ├── git-workflow-hooks.md
 │   │   ├── github-actions-ci-recommendations.md
-│   │   └── useful-tools-and-resources.md    \# NEW: Useful tools and resources
-│   ├── vue-nuxt/                            \# Vue.js & Nuxt.js specific remarks
-│   │   ├── composable-utility-export-pattern.md
-│   │   ├── module-import-style.md
-│   │   ├── pinia-store-encapsulation.md
-│   │   ├── reactivity-shallowref.md
-│   │   └── store-usage-scope.md
-│   ├── typescript-javascript/               \# TypeScript & JavaScript specific remarks
+│   │   └── useful-tools-and-resources.md
+│   ├── styling/                             # Styling related remarks
+│   │   └── tailwind-color-configuration.md
+│   ├── testing/                             # Specific testing tool configurations/issues
+│   │   ├── component-stubbing-vue.md
+│   │   ├── mocking-useRuntimeConfig-vitest.md
+│   │   ├── nuxt-virtual-module-resolution.md
+│   │   ├── test-file-exclusion-and-aliases.md
+│   │   └── vitest-nuxt-reactive-mocks.md
+│   ├── typescript-javascript/               # TypeScript & JavaScript specific remarks
 │   │   ├── async-await-explained.md
 │   │   ├── leveraging-typescript.md
 │   │   └── prevent-duplicate-function-addition.md
-│   ├── styling/                             \# Styling related remarks
-│   │   └── tailwind-color-configuration.md
-│   └── testing/                             \# Specific testing tool configurations/issues
-│       ├── component-stubbing-vue.md
-│       ├── mocking-useRuntimeConfig-vitest.md
-│       ├── nuxt-virtual-module-resolution.md
-│       ├── test-file-exclusion-and-aliases.md
-│       └── vitest-nuxt-reactive-mocks.md
-├── patterns/                                \# In-depth explanations of architectural patterns
-│   ├── api-service-layer-design.md
-│   ├── domain-management-abstraction.md
-│   ├── functional-programming-principles.md
-│   ├── facade-pattern.md
-│   ├── monads-either-maybe.md
-│   └── why-separate-layers.md
-├── presentations/                           \# Longer, presentation-style remarks or deep dives
-│   ├── dto-advice-frontend.md
-│   └── vue-form-validation-best-practices.md
-├── npm/                                     \# NPM package related remarks and troubleshooting
-│   ├── eslint-plugin-local-testing.md       \# Moved from remarks/testing
-│   ├── npm-publish-troubleshooting.md       \# Moved from remarks/testing
-│   └── stylelint-configuration.md           \# Moved from remarks/styling
-├── utils/                                   \# General utility functions and classes
-│   ├── string-utils.ts
-│   ├── number-utils.ts
+│   └── vue-nuxt/                            # Vue.js & Nuxt.js specific remarks
+│       ├── composable-utility-export-pattern.md
+│       ├── module-import-style.md
+│       ├── pinia-store-encapsulation.md
+│       ├── reactivity-shallowref.md
+│       └── store-usage-scope.md
+├── utils/                                   # General utility functions and classes
+│   ├── boolean-utils.ts
 │   ├── money-utils.ts
-│   └── boolean-utils.ts
+│   ├── number-utils.ts
+│   └── string-utils.ts
 ├── .commitlintrc.json                       \# Commitlint configuration
 ├── .editorconfig                            \# Editor style configuration
 ├── .gitignore                               \# Git ignore rules
@@ -290,5 +278,4 @@ This section outlines the current directory and file structure for the `coding-r
 ├── README.md                                \# This document\! (The main entry point)
 ├── .prettierignore                          \# Prettier ignore file
 └── .prettierrc.json                         \# Prettier configuration
-
 ```
