@@ -50,6 +50,11 @@ These are foundational guidelines applicable to almost any programming context.
   - Key skills you miss out on when AI does the heavy lifting.
   - How to use AI as a tool, not a crutch: struggle first, then ask for help.
   - The importance of critical thinking, problem-solving, and building intuition.
+- [** Why Foundational Skills Still Matter in the Age of Frameworks and AI
+  **](./remarks/general/foundational-skills.md)
+  - The importance of understanding core programming concepts.
+  - How frameworks and AI can abstract away complexity, but foundational skills are still crucial.
+  - Examples of how foundational skills help in debugging, optimization, and architecture decisions.
 
 ---
 
@@ -243,6 +248,7 @@ This section outlines the current directory and file structure for the `coding-r
 │   ├── general/                             # General coding advice details
 │   │   ├── ai-learning-caution.md
 │   │   ├── editorconfig.md
+│   │   ├── foundational-skills.md
 │   │   ├── general-coding-principles.md
 │   │   ├── git-workflow-hooks.md
 │   │   ├── github-actions-ci-recommendations.md
