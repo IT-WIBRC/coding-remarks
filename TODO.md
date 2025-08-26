@@ -15,7 +15,7 @@
 
 ## Architecture & Principles
 
-- [ ] Single responsibility principle
+- [x] Single responsibility principle
 - [ ] To avoid coupling with tools you are using, create a separated layer to contain it, making it easy to switch from one tool to another without affecting the other layers. (Use context name instead of tool name)
 - [ ] Content Security Policy (CSP): Websites can implement CSPs to tell your browser exactly which external resources (scripts, stylesheets, images, etc.) are allowed to be loaded on their page. (Implementation Front and Back)
 - [ ] How to create your own simple toast instead of using a library
