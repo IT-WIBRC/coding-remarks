@@ -81,8 +81,14 @@ In-depth explanations of high-level architectural patterns and significant desig
   - Fundamental reasons for separating concerns in application architecture.
   - Benefits: Maintainability, Testability, Readability, Reusability, Scalability, Flexibility.
 - [**Functional Programming Principles for Clean Code**](./patterns/functional-programming-principles.md)
+
   - Deep dive into Pure Functions, Immutability, First-Class/Higher-Order Functions, Composition, and Declarative vs. Imperative Programming.
   - Impact on Clean Code Architecture goals (Testability, Modularity, Readability, Predictability).
+
+- [**Learning the Single Responsibility Principle, One Test at a Time**](./patterns/tdd-to-srp.md)
+  - Applying Test-Driven Development (TDD) to understand and implement the Single Responsibility Principle (SRP).
+  - How writing tests first can guide you to create classes and functions with a single, well-defined purpose.
+  - Refactoring examples to improve code structure and adhere to SRP.
 
 ---
 
@@ -240,6 +246,7 @@ This section outlines the current directory and file structure for the `coding-r
 │   ├── facade-pattern.md
 │   ├── functional-programming-principles.md
 │   ├── monads-either-maybe.md
+│   ├── tdd-to-srp.md
 │   └── why-separate-layers.md
 ├── presentations/                           # Longer, presentation-style remarks or deep dives
 │   ├── dto-advice-frontend.md
