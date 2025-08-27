@@ -28,7 +28,7 @@
 
 - [ ] `eslint-plugin-jsx-a11y` (Test using screen readers like NVDA or VoiceOver) — SEO
 - [ ] Determine circular dependencies in JavaScript projects: (This ESLint plugin includes the import/no-cycle rule, vite-plugin-circular-dependency (for Vite), Tools like NX and Rush, often used in monorepo setups, Extensions like "Circular Dependencies Finder")
-- [ ] Advantages of the `vitest.setup.t`s and `__mocks__`
+- [x] Advantages of the `vitest.setup.t`s and `__mocks__`
 - [ ] `input` autocomplete property
 - [ ] Don't use the `.d.ts` file for handwriting types inside your file for projects that are not a library as it can be harmful, use a normal `.ts` file instead (recommendation from the TS team). To enforce it, use `skipLibCheck` set to `true`.
 - [ ] Always search for repeating code (title, description, button, etc.) and create a component to reuse.
