@@ -179,10 +179,16 @@ Insights into testing methodologies and specific tool configurations.
   - Alias and auto-import issues in test files.
   - IDE behavior differences.
 - [**Testing Reactive Composables in Nuxt & Vitest: Overcoming Mocking Challenges**](./remarks/testing/vitest-nuxt-reactive-mocks.md)
+
   - Vitest's strict matchers (`toBe`, `toEqual`, `toStrictEqual`).
   - The "different instances" problem with reactive mocks in Nuxt/Vitest.
   - Why global mocks in `vitest.setup.ts` can fail for reactive state.
   - A robust pattern for centralizing singleton mocks and applying them locally.
+
+- [**The Hidden Power of Your Test Setup and Mocks**](./remarks/testing/the-hidden-power-of-your-test-setup-and-mocks.md)
+  - Key points about effective test setup and the strategic use of mocks.
+  - How to avoid common pitfalls when mocking dependencies.
+  - Best practices for maintaining clean and reliable tests.
 
 ---
 
@@ -274,6 +280,7 @@ This section outlines the current directory and file structure for the `coding-r
 │   │   ├── mocking-useRuntimeConfig-vitest.md
 │   │   ├── nuxt-virtual-module-resolution.md
 │   │   ├── test-file-exclusion-and-aliases.md
+│   │   ├── the-hidden-power-of-your-test-setup-and-mocks.md
 │   │   └── vitest-nuxt-reactive-mocks.md
 │   ├── typescript-javascript/               # TypeScript & JavaScript specific remarks
 │   │   ├── async-await-explained.md
