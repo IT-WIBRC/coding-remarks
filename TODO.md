@@ -42,3 +42,7 @@
 ## Soft Skills
 
 - [ ] Skills needed (communication, awkward communication, critical thinking, good decision making, goal and organization)
+
+## CI/CD
+
+- [x] Guide to Containerizing a Modern JavaScript SPA (Vite) with a Multi-Stage Nginx Build

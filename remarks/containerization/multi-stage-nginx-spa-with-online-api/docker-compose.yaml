@@ -1,0 +1,25 @@
+version: "3.8" # Use a recent version of the Docker Compose file format
+
+services:
+  frontend:
+    # 1. Build Instructions: Tells Compose to use the Dockerfile in the current directory (.).
+    #    It also passes the required build argument (VITE_API_URL).
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Use your specific remote backend URL here
+        VITE_API_URL: http://localhost:3000/api/v1
+
+    # 2. Container Configuration:
+    container_name: web-radio-frontend
+
+    # 3. Port Mapping: Automatically maps host port 8080 to container port 8080.
+    ports:
+      - "8080:8080"
+
+    # 4. Image Tagging: Tags the final image with a specific name.
+    image: wrf:v1.0.0
+
+    # 5. Restart Policy: Ensures the container restarts if it crashes (good for production).
+    restart: always
