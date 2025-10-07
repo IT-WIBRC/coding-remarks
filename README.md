@@ -11,6 +11,7 @@ The goal is to foster consistent, maintainable, and testable code, serving as a 
 - [Core Principles & General Advice](#core-principles--general-advice)
 - [Architectural Patterns & Design Choices](#architectural-patterns--design-choices)
 - [Language & Framework Specific Remarks](#language--framework-specific-remarks)
+- [Containerization & Deployment](#containerization--deployment)
 - [Utilities](#utilities)
 - [Composables](#composables)
 - [Useful Tools & Resources](#useful-tools--resources)
@@ -50,8 +51,7 @@ These are foundational guidelines applicable to almost any programming context.
   - Key skills you miss out on when AI does the heavy lifting.
   - How to use AI as a tool, not a crutch: struggle first, then ask for help.
   - The importance of critical thinking, problem-solving, and building intuition.
-- [** Why Foundational Skills Still Matter in the Age of Frameworks and AI
-  **](./remarks/general/foundational-skills.md)
+- [**Why Foundational Skills Still Matter in the Age of Frameworks and AI**](./remarks/general/foundational-skills.md)
   - The importance of understanding core programming concepts.
   - How frameworks and AI can abstract away complexity, but foundational skills are still crucial.
   - Examples of how foundational skills help in debugging, optimization, and architecture decisions.
@@ -125,6 +125,19 @@ Practical advice and common patterns specific to particular technologies.
 ### Styling (CSS, Tailwind CSS)
 
 - [Tailwind CSS Color Configuration Best Practice](./remarks/styling/tailwind-color-configuration.md)
+
+---
+
+## Containerization & Deployment
+
+Best practices and architectural patterns for packaging and running applications using container technologies like Docker and Podman.
+
+- [**Containerizing a Modern SPA with Multi-Stage Nginx Build**](./remarks/containerization/multi-stage-nginx-spa-with-online-api/readme.md)
+  - **Goal:** Creating a small, secure, and production-ready container for Vue/React/SPA applications.
+  - **Key Strategy:** Using a **Multi-Stage Build** to discard the large Node.js build environment.
+  - **Security Best Practice:** Running the final Nginx process as a **Non-Root User (`USER nginx`)** to minimize attack surface.
+  - **Nginx Configuration Fixes:** Overcoming common non-root errors by moving the **PID file location** and configuring Nginx to **listen on a high port (e.g., 8080)**.
+  - **Local Workflow:** Automating the build and run process using **`docker-compose.yaml`** (or `podman compose`).
 
 ---
 
@@ -249,6 +262,11 @@ This section outlines the current directory and file structure for the `coding-r
 │   |  └── README.md                          # Documentation for the composable
 |   └── README.md
 ├── npm/                                     # NPM package related remarks and troubleshooting
+├── containerization/
+│   ├── multi-stage-nginx-spa-with-online-api
+│   │   └── readme.md
+├──npm-publish-troubleshooting.md
+│   └── stylelint-configuration.md
 │   ├── eslint-plugin-local-testing.md
 │   ├── npm-publish-troubleshooting.md
 │   └── stylelint-configuration.md
