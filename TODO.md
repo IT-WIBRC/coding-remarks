@@ -46,3 +46,7 @@
 ## CI/CD
 
 - [x] Guide to Containerizing a Modern JavaScript SPA (Vite) with a Multi-Stage Nginx Build
+
+## Security
+
+- [x] Securing API Keys with Serverless Proxies
