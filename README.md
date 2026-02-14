@@ -10,6 +10,7 @@ The goal is to foster consistent, maintainable, and testable code, serving as a 
 
 - [Core Principles & General Advice](#core-principles--general-advice)
 - [Architectural Patterns & Design Choices](#architectural-patterns--design-choices)
+- [Security & Best Practices](#security--best-practices)
 - [Language & Framework Specific Remarks](#language--framework-specific-remarks)
 - [Containerization & Deployment](#containerization--deployment)
 - [Utilities](#utilities)
@@ -95,6 +96,18 @@ In-depth explanations of high-level architectural patterns and significant desig
   - Using Vue's Composition API to break down complex components into smaller, manageable pieces.
   - How this approach improves readability, maintainability, and testability.
   - Example of refactoring a monolithic component into smaller components with clear responsibilities.
+
+---
+
+## Security & Best Practices
+
+Focused on protecting application integrity and sensitive data in modern web environments.
+
+- [**API Key Security: Why `.env` is Not Enough for Frontend React**](./security/api-keys-tutorial-react.md)
+  - The "Tutorial Trap": Why client-side environment variables are still public.
+  - Using **Netlify Functions** (Serverless) as a secure backend proxy.
+  - Architectural benefits: Hiding sensitive logic and protecting API quotas.
+  - Practical implementation with React 19 hooks (`useTransition`, `useActionState`).
 
 ---
 
@@ -310,6 +323,8 @@ This section outlines the current directory and file structure for the `coding-r
 │       ├── pinia-store-encapsulation.md
 │       ├── reactivity-shallowref.md
 │       └── store-usage-scope.md
+── security/                                # Security patterns and tutorials
+│   └── api-keys-tutorial-react.md           # Deep dive into Serverless proxies
 ├── utils/                                   # General utility functions and classes
 │   ├── boolean-utils.ts
 │   ├── money-utils.ts
