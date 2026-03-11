@@ -33,6 +33,7 @@
 - [ ] Don't use the `.d.ts` file for handwriting types inside your file for projects that are not a library as it can be harmful, use a normal `.ts` file instead (recommendation from the TS team). To enforce it, use `skipLibCheck` set to `true`.
 - [ ] Always search for repeating code (title, description, button, etc.) and create a component to reuse.
 - [ ] Look into `vite-tsconfig-paths`.
+- [x] Add accessible tag in html less known by developers
 
 ## Tools & Concepts
 
