@@ -139,6 +139,10 @@ Practical advice and common patterns specific to particular technologies.
 
 - [Tailwind CSS Color Configuration Best Practice](./remarks/styling/tailwind-color-configuration.md)
 
+### HTML
+
+- [20 Unknown HTML Tags That Will Make You Delete Your Custom Components](./remarks/html/20-unknown-html-tags-that-will-make-you-write-less-and-cetter-code.md)
+
 ---
 
 ## Containerization & Deployment
@@ -323,6 +327,8 @@ This section outlines the current directory and file structure for the `coding-r
 │       ├── pinia-store-encapsulation.md
 │       ├── reactivity-shallowref.md
 │       └── store-usage-scope.md
+│   └── HTML/
+|   ├── 20-unknown-html-tags-that-will-make-you-write-less-and-cetter-code.md
 ── security/                                # Security patterns and tutorials
 │   └── api-keys-tutorial-react.md           # Deep dive into Serverless proxies
 ├── utils/                                   # General utility functions and classes
